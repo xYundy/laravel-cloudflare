@@ -29,22 +29,22 @@ class Cloudflare
     /*
      * DNS Queries
      */
-    public function addRecord($name, $content = null, $type = 'A', $ttl = 0, $proxied = true)
+    public function addRecord($name, $content = null, $type = 'A', $ttl = 0, $proxied = true, $zone = $this->zone)
     {
         if ($content == null && $type = 'A') {
             $content = $_SERVER['SERVER_ADDR'];
         }
 
         try {
-            return $this->dns->addRecord($this->zone, $type, $name, $content, $ttl, $proxied);
+            return $this->dns->addRecord($zone, $type, $name, $content, $ttl, $proxied);
         } catch (ClientException $e) {
             return false;
         }
     }
 
-    public function listRecords($info = false, $page = 0, $perPage = 20, $order = '', $direction = '', $type = '', $name = '', $content = '', $match = 'all')
+    public function listRecords($info = false, $page = 0, $perPage = 20, $order = '', $direction = '', $type = '', $name = '', $content = '', $match = 'all', $zone = $this->zone)
     {
-        $records = $this->dns->listRecords($this->zone, $type, $name, $content, $page, $perPage, $order, $direction);
+        $records = $this->dns->listRecords($zone, $type, $name, $content, $page, $perPage, $order, $direction);
 
         if ($info) {
             return $records;
@@ -53,19 +53,19 @@ class Cloudflare
         return collect($records->result);
     }
 
-    public function getRecordDetails($recordId)
+    public function getRecordDetails($recordId, $zone = $this->zone)
     {
-        return $this->dns->getRecordDetails($this->zone, $recordId);
+        return $this->dns->getRecordDetails($zone, $recordId);
     }
 
-    public function updateRecordDetails($recordId, array $details)
+    public function updateRecordDetails($recordId, array $details, $zone = $this->zone)
     {
-        return $this->dns->updateRecordDetails($this->zone, $recordId, $details);
+        return $this->dns->updateRecordDetails($zone, $recordId, $details);
     }
 
-    public function deleteRecord($recordId)
+    public function deleteRecord($recordId, $zone = $this->zone)
     {
-        return $this->dns->deleteRecord($this->zone, $recordId);
+        return $this->dns->deleteRecord($zone, $recordId);
     }
 
     /*

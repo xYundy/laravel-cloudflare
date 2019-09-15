@@ -1,7 +1,7 @@
 {
-  "name": "tnovalis/laravel-cloudflare",
+  "name": "xyundy/laravel-cloudflare",
   "description": "Use the Cloudflare API right from Laravel.",
-  "homepage": "https://github.com/tnovalis/laravel-cloudflare",
+  "homepage": "https://github.com/xYundy/laravel-cloudflare",
   "keywords": [
     "cloudflare",
     "laravel",

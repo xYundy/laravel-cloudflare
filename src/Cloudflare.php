@@ -53,19 +53,19 @@ class Cloudflare
         return collect($records->result);
     }
 
-    public function getRecordDetails($recordId, $zone = $this->zone)
+    public function getRecordDetails($recordId, $zone = null)
     {
-        return $this->dns->getRecordDetails($zone, $recordId);
+        return $this->dns->getRecordDetails($zone ?: $this->zone, $recordId);
     }
 
-    public function updateRecordDetails($recordId, array $details, $zone = $this->zone)
+    public function updateRecordDetails($recordId, array $details, $zone = null)
     {
-        return $this->dns->updateRecordDetails($zone, $recordId, $details);
+        return $this->dns->updateRecordDetails($zone ?: $this->zone, $recordId, $details);
     }
 
-    public function deleteRecord($recordId, $zone = $this->zone)
+    public function deleteRecord($recordId, $zone = null)
     {
-        return $this->dns->deleteRecord($zone, $recordId);
+        return $this->dns->deleteRecord($zone ?: $this->zone, $recordId);
     }
 
     /*

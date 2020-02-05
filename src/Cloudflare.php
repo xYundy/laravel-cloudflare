@@ -29,14 +29,14 @@ class Cloudflare
     /*
      * DNS Queries
      */
-    public function addRecord($name, $content = null, $type = 'A', $ttl = 0, $proxied = true, $zone = $this->zone)
+    public function addRecord($name, $content = null, $type = 'A', $ttl = 0, $proxied = true, $zone = null)
     {
         if ($content == null && $type = 'A') {
             $content = $_SERVER['SERVER_ADDR'];
         }
 
         try {
-            return $this->dns->addRecord($zone, $type, $name, $content, $ttl, $proxied);
+            return $this->dns->addRecord($zone ?: $this->zone, $type, $name, $content, $ttl, $proxied);
         } catch (ClientException $e) {
             return false;
         }

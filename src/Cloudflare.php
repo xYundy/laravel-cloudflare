@@ -42,9 +42,9 @@ class Cloudflare
         }
     }
 
-    public function listRecords($info = false, $page = 0, $perPage = 20, $order = '', $direction = '', $type = '', $name = '', $content = '', $match = 'all', $zone = $this->zone)
+    public function listRecords($info = false, $page = 0, $perPage = 20, $order = '', $direction = '', $type = '', $name = '', $content = '', $match = 'all', $zone = null)
     {
-        $records = $this->dns->listRecords($zone, $type, $name, $content, $page, $perPage, $order, $direction);
+        $records = $this->dns->listRecords($zone ?: $this->zone, $type, $name, $content, $page, $perPage, $order, $direction);
 
         if ($info) {
             return $records;

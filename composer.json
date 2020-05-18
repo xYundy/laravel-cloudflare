@@ -10,13 +10,7 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Novalis",
-      "email": "contact@tnovalis.com",
-      "homepage": "https://tnovalis.com",
-      "role": "Original Creator"
-    },
-        {
-      "name": "Wojciech",
+      "name": "Wojciech Zięciak",
       "email": "wzieciak@itplanet.pl",
       "homepage": "https://xyundy.pl",
       "role": "Developer"
@@ -32,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Novalis\\Cloudflare\\": "src"
+      "xYundy\\Cloudflare\\": "src"
     }
   },
   "config": {
@@ -41,10 +35,10 @@
   "extra": {
     "laravel": {
       "aliases":{
-        "Cloudflare": "Novalis\\Cloudflare\\CloudflareFacade"
+        "Cloudflare": "xYundy\\Cloudflare\\CloudflareFacade"
       },
       "providers": [
-        "Novalis\\Cloudflare\\CloudflareServiceProvider"
+        "xYundy\\Cloudflare\\CloudflareServiceProvider"
       ]
     }
   }

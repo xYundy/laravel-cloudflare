@@ -1,6 +1,6 @@
 <?php
 
-namespace Novalis\Cloudflare;
+namespace xYundy\Cloudflare;
 
 use Illuminate\Support\ServiceProvider;
 
